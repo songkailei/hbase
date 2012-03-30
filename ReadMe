@@ -1,0 +1,20 @@
+This project uses HBase to store inverted index. 
+
+API:
+1.Create index to HBase
+        IndexToHbase th = new IndexToHbase();
+		String folder = "E:\\lucene\\txt";
+		File path = new File(folder);
+		String tableName = "inverted";
+		th.createHbaseTable(tableName);
+		th.dataToHbase(path, tableName);	
+2.Search index data from HBase
+        IndexSearcher search = new IndexSearcher();
+		String query = "喜鹊报喜，乌鸦报的却是忧难和灾祸";
+		String tableName = "inverted";
+		ArrayList<Result> resultList = search.mulSortResult(list, tableName);
+		
+Next Work:
+1.Use Lucene's Analyzer
+2.Design pattern
+3.Partion By Document or Partion By Term
